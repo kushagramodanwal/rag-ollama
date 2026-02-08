@@ -39,21 +39,17 @@ rag-ollama/
 ├── README.md
 ├── LICENSE
 └── .gitignore
-Requirements
-Python 3.9+
 
-Ollama running locally
 
-Model pulled (example)
+---
 
-ollama pull gemma3:1b
-Run
+## Requirements
+
+### Software
+- **Python 3.9+**
+- **Ollama** installed and running locally
+
+### Python Dependencies
+Install using:
+```bash
 pip install -r requirements.txt
-python src/rag.py
-Notes
-This project is intentionally simple to expose core RAG mechanics before introducing embeddings or vector databases.
-
-License
-MIT
-
-
