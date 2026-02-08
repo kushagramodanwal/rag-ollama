@@ -57,13 +57,3 @@ License
 MIT
 
 
----
-
-### Why this version is good
-
-- Short and readable
-- Clearly states **“from scratch”**
-- No fluff
-- Reviewer-friendly
-
-If you want an **ultra-minimal README** (10 lines max) or an **interview-optimized version**, say so.
