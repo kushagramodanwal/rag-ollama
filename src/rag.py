@@ -1,4 +1,7 @@
-
+# Generated from: 15_RAG_ImplemFromSractch_OLlama_Llama2.ipynb
+# Converted at: 2026-02-08T15:35:24.085Z
+# Next step (optional): refactor into modules & generate tests with RunCell
+# Quick start: pip install runcell
 
 corpus_of_documents = [
     "Take a leisurely walk in the park and enjoy the fresh air.",
@@ -13,68 +16,58 @@ corpus_of_documents = [
     "Visit an amusement park and ride the roller coasters."
 ]
 
+
 corpus_of_documents
 
+user_query="I am an indian and i live in india"
 
-user_query="i am an indian and i live in india"
-
-document="india is a country for the indians and for eveyone"
+document="india is a country for the indians and for everyone"
 
 from collections import Counter
 import math
 
-query_tokens=user_query.lower().split(" ")
 
+
+query_tokens = user_query.lower().split(" ")
 query_tokens
 
-document_tokens=document.lower().split(" ")
-
+document_tokens = document.lower().split(" ")
 document_tokens
 
 query_counter=Counter(query_tokens)
-
 query_counter
 
 document_counter=Counter(document_tokens)
-
 document_counter
 
 lst=[]
+
 for token in query_counter.keys():
     lst.append(query_counter[token])
 
-user_query="i am an indian and i live in india"
-document="india is a country for the indians and for eveyone"
 
-#sentence vector
+# sentence vector 
+# instead of using sentence level similarity we are using word level similarity below
 lst
-
-for tokens in query_counter.keys() & document_counter.keys():
-    print(tokens)
 
 mylist=[]
 for tokens in query_counter.keys() & document_counter.keys():
     mylist.append(query_counter[tokens]*document_counter[tokens])
 
+
 mylist
 
-dot_prod=sum(mylist)
+dot_product =sum(mylist) # now this is a dot b
+
 
 query_magnitude = math.sqrt(sum(query_counter[token] ** 2 for token in query_counter))
-    
 
-query_magnitude
 
 document_magnitude = math.sqrt(sum(document_counter[token] ** 2 for token in document_counter))
 
-document_magnitude
 
-similarity=(dot_prod)/(query_magnitude*document_magnitude)
-
+similarity = (dot_product)/(query_magnitude*document_magnitude)
 similarity
-
-user_query="is yoga good for health"
-document="yoga is very good for living healthy lifesytle."
 
 def cosine_similarity(query, document):
     # Tokenize and convert to lowercase
@@ -108,29 +101,31 @@ def return_response(query, corpus):
 
 corpus_of_documents
 
-user_input="i like fresh air."
+user_input="i like fresh air"
 
-relevant_document=return_response(query,corpus_of_documents)
-
-user_input="i like to do yoga"
 
 relevant_document=return_response(user_input,corpus_of_documents)
 
-relevant_document
 
 # how you can configure llm in your local system
-# LLAMA2
-#hugging face(we are not going to use this one)
 
-# augument this response by using llama2 model
+# LLAMA2
+
+# we can also use hugging face but in this we will use Ollama
+
+# this is generic response but i want to augment this response by using llama 2 model
+
 
 import requests
 import json
 full_response = []
 
+
+
+
 full_response = []
 prompt = """
-You are a bot that makes recommendations for activities. You answer in very short sentences and do not include extra information.
+You are a bot that makes recommendations for activities.keep it short to 30 words
 This is the recommended activity: {relevant_document}
 The user input is: {user_input}
 Compile a recommendation to the user based on the recommended activity and the user input.
@@ -140,7 +135,7 @@ url = 'http://localhost:11434/api/generate'
 
 
 data = {
-    "model": "llama2",
+    "model": "gemma3:1b",
     "prompt": prompt.format(user_input=user_input, relevant_document=relevant_document)
 }
 
