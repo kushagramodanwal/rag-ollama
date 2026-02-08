@@ -1,7 +1,3 @@
-# Generated from: 15_RAG_ImplemFromSractch_OLlama_Llama2.ipynb
-# Converted at: 2026-02-08T15:35:24.085Z
-# Next step (optional): refactor into modules & generate tests with RunCell
-# Quick start: pip install runcell
 
 corpus_of_documents = [
     "Take a leisurely walk in the park and enjoy the fresh air.",
@@ -101,10 +97,11 @@ def return_response(query, corpus):
 
 corpus_of_documents
 
-user_input="i like fresh air"
+user_input="i like yoga "
 
 
 relevant_document=return_response(user_input,corpus_of_documents)
+print(relevant_document)
 
 
 # how you can configure llm in your local system
