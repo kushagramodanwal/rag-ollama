@@ -1,41 +1,69 @@
-# RAG using Cosine Similarity + Ollama
+# RAG from Scratch (Cosine Similarity + Ollama)
 
-A minimal Retrieval-Augmented Generation (RAG) pipeline using:
-- Bag-of-words cosine similarity
-- Local LLM inference via Ollama
+A minimal **Retrieval-Augmented Generation (RAG)** implementation built **from scratch** using pure Python and a locally running LLM via Ollama.
 
-## How it works
-1. User query is compared against a document corpus
-2. Most relevant document is selected
-3. The document is injected into an LLM prompt
-4. Ollama generates a short recommendation
+No embeddings.  
+No vector databases.  
+No RAG frameworks.
 
-## Requirements
-- Python 3.9+
-- Ollama running locally
-- Model pulled (example: gemma3:1b)
+---
 
-## Run
-```bash
-pip install -r requirements.txt
-python src/rag.py
+## How It Works
 
-Notes
-
-This project is for learning and demonstration purposes.
+User Query
+→ Bag-of-Words
+→ Cosine Similarity
+→ Top Document Retrieval
+→ Prompt Augmentation
+→ Local LLM (Ollama)
 
 
 ---
 
-## How to move your current file correctly
+## Key Features
 
-From Terminal:
+- Manual document retrieval using bag-of-words
+- Cosine similarity implemented from first principles
+- Context injection into LLM prompts
+- Local inference via Ollama API
 
-```bash
-mkdir -p rag-ollama/src
-mv ~/Downloads/rag.py rag-ollama/src/
-cd rag-ollama
+---
 
-Test before pushing:
+## Project Structure
 
+```text
+rag-ollama/
+├── src/
+│   └── rag.py
+├── requirements.txt
+├── README.md
+├── LICENSE
+└── .gitignore
+Requirements
+Python 3.9+
+
+Ollama running locally
+
+Model pulled (example)
+
+ollama pull gemma3:1b
+Run
+pip install -r requirements.txt
 python src/rag.py
+Notes
+This project is intentionally simple to expose core RAG mechanics before introducing embeddings or vector databases.
+
+License
+MIT
+
+
+---
+
+### Why this version is good
+
+- Short and readable
+- Clearly states **“from scratch”**
+- No fluff
+- Reviewer-friendly
+
+If you want an **ultra-minimal README** (10 lines max) or an **interview-optimized version**, say so.
